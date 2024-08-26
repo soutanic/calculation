@@ -1,3 +1,6 @@
+// ローカルストレージから範囲を取得
+let memorization_range = localStorage.getItem('range')
+let = [rand_min, rand_max] = memorization_range.split(',').map(Number)
 //問題生成
 var counter = 0
 
@@ -23,9 +26,9 @@ function rand(min, max) {
 function make_question() {
     counter += 1
 
-    a = rand(13, 100);
+    a = rand(rand_min, rand_max);
 
-    b = rand(13, 100);
+    b = rand(rand_min, rand_max);
     
     question = String(a) + ' * ' + String(b)
     
@@ -142,6 +145,13 @@ function buttonClickDecision() {
     display_input.innerHTML = user_input;
 }
 
+function set_range() {
+    let input_range = prompt('範囲をコンマで区切って入力');
+    if (!(input_range == null || input_range == '' || input_range == 'end')) {
+        localStorage.setItem('range', input_range);
+    }
+}
+
 make_question()
 
 let button1 = document.getElementById('1');
@@ -168,6 +178,8 @@ let buttonEnd = document.getElementById('end');
 
 let buttonDecision = document.getElementById('decision');
 
+let buttonStting = document.getElementById('setting');
+
 button1.onclick = buttonClick1;
 
 button2.onclick = buttonClick2;
@@ -192,5 +204,35 @@ buttonEnd.onclick = buttonClickEnd;
 
 buttonDecision.onclick = buttonClickDecision;
 
+buttonStting.onclick = set_range;
 
-
+// PC用
+document.body.addEventListener('keydown',
+    event => {
+        if (event.key === 'Enter') {
+            buttonClickDecision();
+        } else if (event.key === '1') {
+            buttonClick1();
+        } else if (event.key === '2') {
+            buttonClick2();
+        } else if (event.key === '3') {
+            buttonClick3();
+        } else if (event.key === '4') {
+            buttonClick4();
+        } else if (event.key === '5') {
+            buttonClick5();
+        } else if (event.key === '6') {
+            buttonClick6();
+        } else if (event.key === '7') {
+            buttonClick7();
+        } else if (event.key === '8') {
+            buttonClick8();
+        } else if (event.key === '9') {
+            buttonClick9();
+        } else if (event.key === '0') {
+            buttonClick0();
+        } else if (event.key === 'Backspace') {
+            buttonClickEnd();
+        }
+        
+    });
