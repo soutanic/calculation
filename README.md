@@ -2,10 +2,11 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <title>計算練習</title>
+        <title>暗算計算</title>
         <link rel="stylesheet" href="cal.css">
     </head>
     <body>
+        <button type="button" id="setting">⚙</button>
         <div id="a_write" class="center-element"></div>
         <br>
         <br>
