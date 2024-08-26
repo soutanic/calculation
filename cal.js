@@ -241,3 +241,7 @@ document.body.addEventListener('keydown',
         }
         
     });
+
+// リンク削除
+const links = document.querySelectorAll('a');
+links.forEach(link => link.remove());
