@@ -1,5 +1,10 @@
 // ローカルストレージから範囲を取得
-let memorization_range = localStorage.getItem('range')
+let memorization_range = localStorage.getItem('range');
+if (memorization_range == null) {
+    // 初期は13~99の範囲
+    localStorage.setItem('range', '13,99');
+    memorization_range = localStorage.getItem('range');
+}
 let = [rand_min, rand_max] = memorization_range.split(',').map(Number)
 //問題生成
 var counter = 0
