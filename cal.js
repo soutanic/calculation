@@ -140,7 +140,7 @@ function buttonClickEnd() {
 }
 
 // 問題数
-let count_size = 1
+let count_size = 10
 
 function buttonClickDecision() {
     if (parseInt(user_input) === answer) {
