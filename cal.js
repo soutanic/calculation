@@ -6,6 +6,12 @@ if (memorization_range == null) {
     memorization_range = localStorage.getItem('range');
 }
 let = [rand_min, rand_max] = memorization_range.split(',').map(Number)
+
+//時間計測
+let end_time;
+let start_time;
+start_time = new Date();
+
 //問題生成
 var counter = 0
 
@@ -133,14 +139,18 @@ function buttonClickEnd() {
     display_input.innerHTML = user_input;
 }
 
+// 問題数
+let count_size = 1
+
 function buttonClickDecision() {
     if (parseInt(user_input) === answer) {
         user_input = '[入力]'
         answer_audio.play();
-        if (counter !== 10) {
+        if (counter !== count_size) {
             make_question()
         } else {
-            user_input = '終了です。';
+            end_time = new Date();
+            user_input = String((end_time - start_time) / 1000) + '秒です';
             display_input.innerHTML = user_input;
         }
     } else {
